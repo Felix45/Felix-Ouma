@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  techStack   String // JSON-encoded string[] (SQLite has no native array type)
+  demoUrl     String?
+  repoUrl     String?
+  coverImage  String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id                String   @id @default("singleton")
+  name              String
+  title             String
+  description       String
+  role              String
+  yearsOfExperience String
+  education         String
+  resumeUrl         String
+  heroSummary       String
+  aboutParagraph1   String
+  aboutParagraph2   String
+  aboutHighlights   String // JSON-encoded string[]
+  githubUrl         String
+  linkedinUrl       String
+  twitterUrl        String
+  mediumUrl         String
+  focusAreas        String // JSON-encoded string[]
+  skillLanguages    String // JSON-encoded string[]
+  skillFrameworks   String // JSON-encoded string[]
+  skillTools        String // JSON-encoded string[]
+  translations      String   @default("{}") // JSON-encoded Record<Locale, Partial<fields>>
+  updatedAt         DateTime @updatedAt
+}
+
+model Experience {
+  id         String   @id @default(cuid())
+  role       String
+  company    String
+  employment String
+  period     String
+  location   String
+  skills     String // JSON-encoded string[]
+  highlights String // JSON-encoded string[]
+  translations String @default("{}") // JSON-encoded Record<Locale, Partial<fields>>
+  order      Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Service {
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  translations String   @default("{}") // JSON-encoded Record<Locale, Partial<fields>>
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
