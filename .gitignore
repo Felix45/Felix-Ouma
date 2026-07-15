@@ -45,5 +45,9 @@ next-env.d.ts
 /lib/generated/prisma
 /dev.db
 /dev.db-journal
+/dev.db-shm
+/dev.db-wal
 /test.db
 /test.db-journal
+/test.db-shm
+/test.db-wal

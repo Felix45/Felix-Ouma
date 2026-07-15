@@ -45,9 +45,9 @@ export function ProjectSpotlight({
       onBlurCapture={() => setPaused(false)}
     >
       <h2 className="sr-only">{dict.projectSpotlight.browseProjects}</h2>
-      <div className="mx-auto flex w-full max-w-[1320px] items-stretch justify-between gap-6 overflow-hidden px-4 sm:px-6 lg:px-10 xl:px-16">
-        <div className="flex items-stretch gap-3 text-left">
-          <div className="flex shrink-0 flex-col justify-between border-x-4 border-accent bg-surface px-4 py-6">
+      <div className="mx-auto flex w-full max-w-[1320px] items-stretch justify-between gap-6 overflow-x-hidden px-4 sm:px-6 lg:px-10 xl:px-16">
+        <div className="flex min-w-0 flex-1 items-stretch gap-3 text-left">
+          <div className="hidden shrink-0 flex-col justify-between border-x-4 border-accent bg-surface px-4 py-6 sm:flex">
             <span className="flex h-7 items-center font-sans text-[11px] font-bold uppercase tracking-wider text-foreground-muted">
               {dict.projectSpotlight.projectTitleLabel}
             </span>
@@ -63,7 +63,7 @@ export function ProjectSpotlight({
               animate={{ opacity: 1, x: 0 }}
               exit={shouldReduceMotion ? undefined : { opacity: 0, x: -40 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-start gap-2 py-6"
+              className="flex min-w-0 flex-col items-start gap-2 py-6"
             >
               <Link
                 href={`/projects/${project.slug}`}
@@ -71,7 +71,7 @@ export function ProjectSpotlight({
               >
                 {project.title}
               </Link>
-              <div className="flex h-7 flex-wrap items-center gap-2">
+              <div className="flex h-7 w-full items-center gap-2 overflow-x-auto">
                 {project.techStack.map((tech) => (
                   <TechBadge key={tech} tech={tech} />
                 ))}

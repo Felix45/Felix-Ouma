@@ -19,7 +19,7 @@ export function TechBadge({ tech }: { tech: string }) {
 
   return (
     <span
-      className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-xs text-foreground-muted"
+      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-xs text-foreground-muted"
       style={{
         borderColor: `color-mix(in srgb, ${color} 40%, var(--border))`,
         backgroundColor: `color-mix(in srgb, ${color} 12%, var(--surface))`,
