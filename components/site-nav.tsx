@@ -33,7 +33,7 @@ export function SiteNav({ locale, dict }: { locale: Locale; dict: Dictionary }) 
           <span className="text-accent">~/</span>felix-<span className="text-accent">ouma</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 min-[769px]:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-1 min-[1024px]:flex" aria-label="Primary">
           {navLinks.map((link) => {
             const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
             return (
@@ -51,12 +51,12 @@ export function SiteNav({ locale, dict }: { locale: Locale; dict: Dictionary }) 
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 min-[769px]:flex">
+        <div className="hidden items-center gap-3 min-[1024px]:flex">
           <LanguageSwitcher locale={locale} label={dict.nav.languageLabel} />
           <ThemeToggle label={dict.theme.toggleLabel} />
         </div>
 
-        <div className="flex items-center gap-2 min-[769px]:hidden">
+        <div className="flex items-center gap-2 min-[1024px]:hidden">
           <LanguageSwitcher locale={locale} label={dict.nav.languageLabel} />
           <ThemeToggle label={dict.theme.toggleLabel} />
           <button
@@ -76,7 +76,7 @@ export function SiteNav({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="border-t border-border bg-background px-4 py-3 min-[769px]:hidden"
+          className="border-t border-border bg-background px-4 py-3 min-[1024px]:hidden"
         >
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
