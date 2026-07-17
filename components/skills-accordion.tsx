@@ -35,7 +35,7 @@ export function SkillsAccordion({ skills, dict }: { skills: SkillsData; dict: Di
                 {group.title}
               </span>
               <span className="font-mono text-xs text-foreground-muted">
-                {String(group.items.length).padStart(2, "0")}
+                {String(index + 1).padStart(2, "0")}
               </span>
               <svg
                 viewBox="0 0 24 24"
