@@ -50,7 +50,7 @@ const formSchema = z.object({
   focusAreasInput: z.string().trim().min(1, "Add at least one focus area"),
   aboutParagraph1: z.string().trim().min(1, "Required").max(1000),
   aboutParagraph2: z.string().trim().min(1, "Required").max(1000),
-  aboutHighlightsInput: z.string().trim().min(1, "Add at least one highlight"),
+  aboutHighlightsInput: z.string().trim().optional().or(z.literal("")),
   githubUrl: optionalUrl,
   linkedinUrl: optionalUrl,
   twitterUrl: optionalUrl,
@@ -182,7 +182,7 @@ export function SiteSettingsForm({ settings }: { settings: SiteSettingsDTO }) {
       focusAreas: splitCommas(values.focusAreasInput),
       aboutParagraph1: values.aboutParagraph1,
       aboutParagraph2: values.aboutParagraph2,
-      aboutHighlights: splitLines(values.aboutHighlightsInput),
+      aboutHighlights: splitLines(values.aboutHighlightsInput ?? ""),
       social: {
         github: values.githubUrl,
         linkedin: values.linkedinUrl,

@@ -71,8 +71,8 @@ export const projectInputSchema = z.object({
   demoUrl: optionalUrl,
   repoUrl: optionalUrl,
   coverImage: optionalUrl,
-  featured: z.boolean().optional().default(false),
-  order: z.number().int().optional().default(0),
+  featured: z.boolean().optional(),
+  order: z.number().int().optional(),
 });
 
 export const projectUpdateSchema = projectInputSchema.partial();
@@ -133,9 +133,9 @@ export const experienceInputSchema = z.object({
   employment: z.string().trim().min(1, "Employment type is required").max(60),
   period: z.string().trim().min(1, "Period is required").max(80),
   location: z.string().trim().min(1, "Location is required").max(160),
-  skills: z.array(z.string().trim().min(1)).default([]),
-  highlights: z.array(z.string().trim().min(1)).default([]),
-  order: z.number().int().optional().default(0),
+  skills: z.array(z.string().trim().min(1)).optional(),
+  highlights: z.array(z.string().trim().min(1)).optional(),
+  order: z.number().int().optional(),
   translations: experienceTranslationsSchema.optional(),
 });
 
@@ -144,7 +144,7 @@ export const experienceUpdateSchema = experienceInputSchema.partial();
 export const serviceInputSchema = z.object({
   title: z.string().trim().min(1, "Title is required").max(120),
   description: z.string().trim().min(1, "Description is required").max(500),
-  order: z.number().int().optional().default(0),
+  order: z.number().int().optional(),
   translations: serviceTranslationsSchema.optional(),
 });
 

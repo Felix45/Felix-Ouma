@@ -129,12 +129,12 @@ const experience = [
 
 const services = [
   {
-    title: "Full-Stack Web Apps",
+    title: "Front-End Development",
     description: "React and Next.js front ends backed by Rails or Node APIs, shipped end to end.",
     order: 0,
   },
   {
-    title: "API & Backend Development",
+    title: "Backend Development",
     description: "REST APIs and data models designed to hold up under real traffic.",
     order: 1,
   },
