@@ -263,7 +263,7 @@ export default async function Home() {
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {featuredProjects.map((project, index) => (
                 <Reveal key={project.id} delay={index * 0.05}>
-                  <ProjectCard project={project} dict={dict} />
+                  <ProjectCard project={project} />
                 </Reveal>
               ))}
             </div>

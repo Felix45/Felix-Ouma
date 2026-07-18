@@ -2,9 +2,8 @@ import Link from "next/link";
 import type { ProjectDTO } from "@/lib/projects";
 import { Tag } from "@/components/tag";
 import { hashHue } from "@/lib/gradient";
-import type { Dictionary } from "@/lib/i18n/get-dictionary";
 
-export function ProjectCard({ project, dict }: { project: ProjectDTO; dict: Dictionary }) {
+export function ProjectCard({ project }: { project: ProjectDTO }) {
   const hue = hashHue(project.slug);
   const initials = project.title
     .split(/\s+/)
@@ -43,17 +42,9 @@ export function ProjectCard({ project, dict }: { project: ProjectDTO; dict: Dict
       </div>
 
       <div className="flex flex-1 flex-col gap-4 p-6">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="text-lg font-semibold text-foreground group-hover:text-accent">
-            {project.title}
-          </h3>
-          {project.featured && (
-            <span className="mt-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-accent">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              {dict.projectCard.featuredBadge}
-            </span>
-          )}
-        </div>
+        <h3 className="text-lg font-semibold text-foreground group-hover:text-accent">
+          {project.title}
+        </h3>
         <p className="line-clamp-3 flex-1 text-lg leading-relaxed text-foreground-muted">
           {project.description}
         </p>
