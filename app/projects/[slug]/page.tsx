@@ -67,12 +67,14 @@ export default async function ProjectPage({ params }: { params: Params }) {
         </div>
 
         {project.coverImage && (
-          // eslint-disable-next-line @next/next/no-img-element -- cover image URL is admin-supplied and arbitrary, so next/image's allow-listed remotePatterns can't be predicted in advance.
-          <img
-            src={project.coverImage}
-            alt={`${project.title} cover`}
-            className="mt-8 w-full rounded-lg border border-border object-cover shadow-2xl shadow-black/20"
-          />
+          <div className="mt-8 rounded-lg border border-border bg-surface p-3">
+            {/* eslint-disable-next-line @next/next/no-img-element -- cover image URL is admin-supplied and arbitrary, so next/image's allow-listed remotePatterns can't be predicted in advance. */}
+            <img
+              src={project.coverImage}
+              alt={`${project.title} cover`}
+              className="w-full rounded-md object-cover"
+            />
+          </div>
         )}
 
         <p className="mt-8 text-lg leading-relaxed text-foreground-muted">
