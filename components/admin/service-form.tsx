@@ -132,10 +132,13 @@ export function ServiceForm({ service }: { service?: ServiceDTO }) {
               className={`focus-ring rounded-md border px-3 py-1.5 font-mono text-xs transition-colors ${
                 activeLocale === code
                   ? "border-accent bg-accent/10 text-accent"
-                  : "border-border text-foreground-muted hover:border-accent hover:text-accent"
+                  : errors.translations?.[code]
+                    ? "border-danger text-danger hover:border-danger"
+                    : "border-border text-foreground-muted hover:border-accent hover:text-accent"
               }`}
             >
               {localeNames[code]}
+              {errors.translations?.[code] && " *"}
             </button>
           ))}
         </div>
@@ -154,6 +157,11 @@ export function ServiceForm({ service }: { service?: ServiceDTO }) {
                 className="focus-ring rounded-md border border-border bg-surface px-4 py-2.5 text-sm text-foreground"
                 {...register(`translations.${code}.title`)}
               />
+              {errors.translations?.[code]?.title && (
+                <p role="alert" className="text-xs text-danger">
+                  {errors.translations[code]?.title?.message}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-1.5">
               <label
@@ -168,6 +176,11 @@ export function ServiceForm({ service }: { service?: ServiceDTO }) {
                 className="focus-ring resize-y rounded-md border border-border bg-surface px-4 py-2.5 text-sm text-foreground"
                 {...register(`translations.${code}.description`)}
               />
+              {errors.translations?.[code]?.description && (
+                <p role="alert" className="text-xs text-danger">
+                  {errors.translations[code]?.description?.message}
+                </p>
+              )}
             </div>
           </div>
         ))}

@@ -251,10 +251,13 @@ export function ExperienceForm({ entry }: { entry?: ExperienceDTO }) {
               className={`focus-ring rounded-md border px-3 py-1.5 font-mono text-xs transition-colors ${
                 activeLocale === code
                   ? "border-accent bg-accent/10 text-accent"
-                  : "border-border text-foreground-muted hover:border-accent hover:text-accent"
+                  : errors.translations?.[code]
+                    ? "border-danger text-danger hover:border-danger"
+                    : "border-border text-foreground-muted hover:border-accent hover:text-accent"
               }`}
             >
               {localeNames[code]}
+              {errors.translations?.[code] && " *"}
             </button>
           ))}
         </div>
@@ -273,6 +276,11 @@ export function ExperienceForm({ entry }: { entry?: ExperienceDTO }) {
                 className="focus-ring rounded-md border border-border bg-surface px-4 py-2.5 text-sm text-foreground"
                 {...register(`translations.${code}.role`)}
               />
+              {errors.translations?.[code]?.role && (
+                <p role="alert" className="text-xs text-danger">
+                  {errors.translations[code]?.role?.message}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-1.5">
               <label
@@ -286,6 +294,11 @@ export function ExperienceForm({ entry }: { entry?: ExperienceDTO }) {
                 className="focus-ring rounded-md border border-border bg-surface px-4 py-2.5 text-sm text-foreground"
                 {...register(`translations.${code}.employment`)}
               />
+              {errors.translations?.[code]?.employment && (
+                <p role="alert" className="text-xs text-danger">
+                  {errors.translations[code]?.employment?.message}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-1.5">
               <label
@@ -300,6 +313,11 @@ export function ExperienceForm({ entry }: { entry?: ExperienceDTO }) {
                 className="focus-ring resize-y rounded-md border border-border bg-surface px-4 py-2.5 text-sm text-foreground"
                 {...register(`translations.${code}.highlightsInput`)}
               />
+              {errors.translations?.[code]?.highlightsInput && (
+                <p role="alert" className="text-xs text-danger">
+                  {errors.translations[code]?.highlightsInput?.message}
+                </p>
+              )}
             </div>
           </div>
         ))}

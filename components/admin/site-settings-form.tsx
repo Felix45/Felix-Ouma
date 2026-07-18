@@ -28,11 +28,11 @@ function splitCommas(value: string): string[] {
 const optionalUrl = z.union([z.url("Enter a valid URL"), z.literal("")]);
 
 const translationFieldsSchema = z.object({
-  title: z.string().max(160).optional().or(z.literal("")),
-  description: z.string().max(300).optional().or(z.literal("")),
-  role: z.string().max(120).optional().or(z.literal("")),
-  heroSummary: z.string().max(300).optional().or(z.literal("")),
-  education: z.string().max(160).optional().or(z.literal("")),
+  title: z.string().max(500).optional().or(z.literal("")),
+  description: z.string().max(500).optional().or(z.literal("")),
+  role: z.string().max(500).optional().or(z.literal("")),
+  heroSummary: z.string().max(500).optional().or(z.literal("")),
+  education: z.string().max(500).optional().or(z.literal("")),
   aboutParagraph1: z.string().max(1000).optional().or(z.literal("")),
   aboutParagraph2: z.string().max(1000).optional().or(z.literal("")),
   aboutHighlightsInput: z.string().optional().or(z.literal("")),
@@ -40,13 +40,13 @@ const translationFieldsSchema = z.object({
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(120),
-  title: z.string().trim().min(1, "Title is required").max(160),
-  description: z.string().trim().min(1, "Description is required").max(300),
-  role: z.string().trim().min(1, "Role is required").max(120),
+  title: z.string().trim().min(1, "Title is required").max(500),
+  description: z.string().trim().min(1, "Description is required").max(500),
+  role: z.string().trim().min(1, "Role is required").max(500),
   yearsOfExperience: z.string().trim().min(1, "Required").max(20),
-  education: z.string().trim().min(1, "Required").max(160),
+  education: z.string().trim().min(1, "Required").max(500),
   resumeUrl: z.string().trim().min(1, "Required").max(300),
-  heroSummary: z.string().trim().min(1, "Required").max(300),
+  heroSummary: z.string().trim().min(1, "Required").max(500),
   focusAreasInput: z.string().trim().min(1, "Add at least one focus area"),
   aboutParagraph1: z.string().trim().min(1, "Required").max(1000),
   aboutParagraph2: z.string().trim().min(1, "Required").max(1000),
@@ -332,10 +332,13 @@ export function SiteSettingsForm({ settings }: { settings: SiteSettingsDTO }) {
               className={`focus-ring rounded-md border px-3 py-1.5 font-mono text-xs transition-colors ${
                 activeLocale === code
                   ? "border-accent bg-accent/10 text-accent"
-                  : "border-border text-foreground-muted hover:border-accent hover:text-accent"
+                  : errors.translations?.[code]
+                    ? "border-danger text-danger hover:border-danger"
+                    : "border-border text-foreground-muted hover:border-accent hover:text-accent"
               }`}
             >
               {localeNames[code]}
+              {errors.translations?.[code] && " *"}
             </button>
           ))}
         </div>
@@ -345,10 +348,18 @@ export function SiteSettingsForm({ settings }: { settings: SiteSettingsDTO }) {
             <p className="text-xs text-foreground-muted">
               Falls back to English for any field left blank.
             </p>
-            <Field label="Page title" htmlFor={`translations.${code}.title`}>
+            <Field
+              label="Page title"
+              htmlFor={`translations.${code}.title`}
+              error={errors.translations?.[code]?.title?.message}
+            >
               <input id={`translations.${code}.title`} className={inputClass} {...register(`translations.${code}.title`)} />
             </Field>
-            <Field label="Meta description" htmlFor={`translations.${code}.description`}>
+            <Field
+              label="Meta description"
+              htmlFor={`translations.${code}.description`}
+              error={errors.translations?.[code]?.description?.message}
+            >
               <textarea
                 id={`translations.${code}.description`}
                 rows={3}
@@ -356,10 +367,18 @@ export function SiteSettingsForm({ settings }: { settings: SiteSettingsDTO }) {
                 {...register(`translations.${code}.description`)}
               />
             </Field>
-            <Field label="Role" htmlFor={`translations.${code}.role`}>
+            <Field
+              label="Role"
+              htmlFor={`translations.${code}.role`}
+              error={errors.translations?.[code]?.role?.message}
+            >
               <input id={`translations.${code}.role`} className={inputClass} {...register(`translations.${code}.role`)} />
             </Field>
-            <Field label="Hero summary sentence" htmlFor={`translations.${code}.heroSummary`}>
+            <Field
+              label="Hero summary sentence"
+              htmlFor={`translations.${code}.heroSummary`}
+              error={errors.translations?.[code]?.heroSummary?.message}
+            >
               <textarea
                 id={`translations.${code}.heroSummary`}
                 rows={3}
@@ -367,14 +386,22 @@ export function SiteSettingsForm({ settings }: { settings: SiteSettingsDTO }) {
                 {...register(`translations.${code}.heroSummary`)}
               />
             </Field>
-            <Field label="Education" htmlFor={`translations.${code}.education`}>
+            <Field
+              label="Education"
+              htmlFor={`translations.${code}.education`}
+              error={errors.translations?.[code]?.education?.message}
+            >
               <input
                 id={`translations.${code}.education`}
                 className={inputClass}
                 {...register(`translations.${code}.education`)}
               />
             </Field>
-            <Field label="About paragraph 1" htmlFor={`translations.${code}.aboutParagraph1`}>
+            <Field
+              label="About paragraph 1"
+              htmlFor={`translations.${code}.aboutParagraph1`}
+              error={errors.translations?.[code]?.aboutParagraph1?.message}
+            >
               <textarea
                 id={`translations.${code}.aboutParagraph1`}
                 rows={4}
@@ -382,7 +409,11 @@ export function SiteSettingsForm({ settings }: { settings: SiteSettingsDTO }) {
                 {...register(`translations.${code}.aboutParagraph1`)}
               />
             </Field>
-            <Field label="About paragraph 2" htmlFor={`translations.${code}.aboutParagraph2`}>
+            <Field
+              label="About paragraph 2"
+              htmlFor={`translations.${code}.aboutParagraph2`}
+              error={errors.translations?.[code]?.aboutParagraph2?.message}
+            >
               <textarea
                 id={`translations.${code}.aboutParagraph2`}
                 rows={4}
@@ -393,6 +424,7 @@ export function SiteSettingsForm({ settings }: { settings: SiteSettingsDTO }) {
             <Field
               label="About highlights (one per line)"
               htmlFor={`translations.${code}.aboutHighlightsInput`}
+              error={errors.translations?.[code]?.aboutHighlightsInput?.message}
             >
               <textarea
                 id={`translations.${code}.aboutHighlightsInput`}

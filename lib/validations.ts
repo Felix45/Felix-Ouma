@@ -2,11 +2,11 @@ import { z } from "zod";
 
 const siteSettingsTranslationSchema = z
   .object({
-    title: z.string().trim().max(160).optional(),
-    description: z.string().trim().max(300).optional(),
-    role: z.string().trim().max(120).optional(),
-    heroSummary: z.string().trim().max(300).optional(),
-    education: z.string().trim().max(160).optional(),
+    title: z.string().trim().max(500).optional(),
+    description: z.string().trim().max(500).optional(),
+    role: z.string().trim().max(500).optional(),
+    heroSummary: z.string().trim().max(500).optional(),
+    education: z.string().trim().max(500).optional(),
     aboutParagraph1: z.string().trim().max(1000).optional(),
     aboutParagraph2: z.string().trim().max(1000).optional(),
     aboutHighlights: z.array(z.string().trim().min(1)).max(12).optional(),
@@ -100,13 +100,13 @@ export const contactInputSchema = z.object({
 
 export const siteSettingsSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(120),
-  title: z.string().trim().min(1, "Title is required").max(160),
-  description: z.string().trim().min(1, "Description is required").max(300),
-  role: z.string().trim().min(1, "Role is required").max(120),
+  title: z.string().trim().min(1, "Title is required").max(500),
+  description: z.string().trim().min(1, "Description is required").max(500),
+  role: z.string().trim().min(1, "Role is required").max(500),
   yearsOfExperience: z.string().trim().min(1, "Required").max(20),
-  education: z.string().trim().min(1, "Required").max(160),
+  education: z.string().trim().min(1, "Required").max(500),
   resumeUrl: z.string().trim().min(1, "Required").max(300),
-  heroSummary: z.string().trim().min(1, "Required").max(300),
+  heroSummary: z.string().trim().min(1, "Required").max(500),
   aboutParagraph1: z.string().trim().min(1, "Required").max(1000),
   aboutParagraph2: z.string().trim().min(1, "Required").max(1000),
   aboutHighlights: z.array(z.string().trim().min(1)).max(12),
