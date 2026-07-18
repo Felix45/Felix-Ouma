@@ -1,16 +1,11 @@
-# Felix Ouma — Portfolio
+# Felix Ouma  Portfolio
 
 A full-stack personal portfolio built with Next.js 16 (App Router), TypeScript,
 Tailwind CSS v4, Prisma, and Auth.js. Includes a public site (home, project
-listing, project detail pages) and a protected `/admin` dashboard for managing
+listing, project detail pages) and a protected administrator dashboard for managing
 projects and reading contact form submissions.
 
-> **Note on Next.js version:** this project targets **Next.js 16**, which has
-> several breaking changes relative to older tutorials/training data —
-> `middleware.ts` is renamed to `proxy.ts`, `next lint` is removed in favor of
-> the ESLint CLI, PPR is now an opt-in `cacheComponents` flag, etc. See
-> `node_modules/next/dist/docs/01-app/02-guides/upgrading/version-16.md` if
-> something looks unfamiliar.
+![](./public/screenshot.png)
 
 ## Tech stack
 
