@@ -1,11 +1,15 @@
 import {
   siCss,
   siDocker,
+  siDrupal,
   siGit,
   siHtml5,
   siJavascript,
+  siMui,
+  siMysql,
   siNextdotjs,
   siNodedotjs,
+  siPhp,
   siPostgresql,
   siPrisma,
   siReact,
@@ -40,6 +44,11 @@ const ICONS: Record<string, TechIcon> = {
   postgresql: siPostgresql,
   postgres: siPostgresql,
   prisma: siPrisma,
+  drupal: siDrupal,
+  php: siPhp,
+  mysql: siMysql,
+  "material ui": siMui,
+  mui: siMui,
 };
 
 export function getTechIcon(name: string): TechIcon | null {
