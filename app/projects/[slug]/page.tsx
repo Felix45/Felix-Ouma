@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
-import { Tag } from "@/components/tag";
+import { TechBadge } from "@/components/tech-badge";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getProjectBySlug, listProjects } from "@/lib/projects";
@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
 
         <div className="mt-4 flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
-            <Tag key={tech}>{tech}</Tag>
+            <TechBadge key={tech} tech={tech} />
           ))}
         </div>
 

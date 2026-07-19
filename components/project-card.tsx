@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ProjectDTO } from "@/lib/projects";
-import { Tag } from "@/components/tag";
+import { TechBadge } from "@/components/tech-badge";
 import { hashHue } from "@/lib/gradient";
 
 export function ProjectCard({ project }: { project: ProjectDTO }) {
@@ -48,7 +48,7 @@ export function ProjectCard({ project }: { project: ProjectDTO }) {
         </p>
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
-            <Tag key={tech}>{tech}</Tag>
+            <TechBadge key={tech} tech={tech} />
           ))}
         </div>
       </div>
