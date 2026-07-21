@@ -19,19 +19,19 @@ export function TechBadge({ tech }: { tech: string }) {
 
   return (
     <span
-      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-xs text-foreground-muted"
+      className="inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 font-mono text-[10px] text-foreground-muted sm:gap-1.5 sm:px-2.5 sm:py-1 sm:text-xs"
       style={{
         borderColor: `color-mix(in srgb, ${color} 40%, var(--border))`,
         backgroundColor: `color-mix(in srgb, ${color} 12%, var(--surface))`,
       }}
     >
       {icon ? (
-        <svg viewBox="0 0 24 24" className="h-3 w-3 shrink-0" fill={color} aria-hidden="true">
+        <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 shrink-0 sm:h-3 sm:w-3" fill={color} aria-hidden="true">
           <path d={icon.path} />
         </svg>
       ) : (
         <span
-          className="h-1.5 w-1.5 shrink-0 rounded-full"
+          className="h-1 w-1 shrink-0 rounded-full sm:h-1.5 sm:w-1.5"
           style={{ backgroundColor: color }}
           aria-hidden="true"
         />

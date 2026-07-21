@@ -45,8 +45,8 @@ export function ProjectSpotlight({
       onBlurCapture={() => setPaused(false)}
     >
       <h2 className="sr-only">{dict.projectSpotlight.browseProjects}</h2>
-      <div className="mx-auto flex w-full max-w-[1320px] items-stretch justify-between gap-6 overflow-x-hidden px-4 sm:px-6 lg:px-10 xl:px-16">
-        <div className="flex min-w-0 flex-1 items-stretch gap-3 text-left">
+      <div className="relative mx-auto flex w-full max-w-[1320px] items-stretch overflow-x-hidden px-4 sm:px-6 lg:px-10 xl:px-16">
+        <div className="flex min-w-0 flex-1 items-stretch gap-3 pr-24 text-left">
           <div className="hidden shrink-0 flex-col justify-between border-x-4 border-accent bg-surface px-4 py-6 sm:flex">
             <span className="flex h-7 items-center font-sans text-[11px] font-bold uppercase tracking-wider text-foreground-muted">
               {dict.projectSpotlight.projectTitleLabel}
@@ -63,11 +63,11 @@ export function ProjectSpotlight({
               animate={{ opacity: 1, x: 0 }}
               exit={shouldReduceMotion ? undefined : { opacity: 0, x: -40 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="flex min-w-0 flex-col items-start gap-2 py-6"
+              className="flex min-w-0 flex-col items-start gap-2 py-4 sm:py-6"
             >
               <Link
                 href={`/projects/${project.slug}`}
-                className="focus-ring flex h-7 items-center rounded-md font-sans text-lg font-bold tracking-wide text-accent uppercase underline underline-offset-4"
+                className="focus-ring flex h-7 w-full min-w-0 items-center truncate rounded-md font-sans text-lg font-bold tracking-wide text-accent uppercase underline underline-offset-4"
               >
                 {project.title}
               </Link>
@@ -81,7 +81,7 @@ export function ProjectSpotlight({
         </div>
 
         {projects.length > 1 && (
-          <div className="flex shrink-0 items-center gap-2 py-6">
+          <div className="absolute right-4 top-4 flex items-center gap-2 sm:right-6 sm:top-6">
             <button
               type="button"
               onClick={goPrev}
