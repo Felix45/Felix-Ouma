@@ -45,7 +45,7 @@ export default async function Home() {
               <p className="font-mono text-sm text-accent">$ whoami</p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="max-w-2xl text-5xl font-semibold tracking-tight text-foreground sm:text-6xl">
+              <h1 className="font-masthead max-w-2xl text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
                 {dict.hero.greetingBefore} <span className="text-accent">{settings.name}</span>
                 {dict.hero.greetingAfter}
               </h1>

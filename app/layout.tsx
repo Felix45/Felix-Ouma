@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Quicksand } from "next/font/google";
+import localFont from "next/font/local";
 import { InlineScript } from "@/components/inline-script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
@@ -20,6 +21,11 @@ const quicksand = Quicksand({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const nytMasthead = localFont({
+  src: "../public/CloisterBlack.ttf",
+  variable: "--font-nyt-masthead",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -64,7 +70,7 @@ export default async function RootLayout({
       data-theme="dark"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${quicksand.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${quicksand.variable} ${geistMono.variable} ${nytMasthead.variable} h-full antialiased`}
     >
       <head>
         <InlineScript html={themeInitScript} />

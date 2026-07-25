@@ -19,8 +19,8 @@ const dictionary = {
     getInTouch: "Get in touch",
   },
   hero: {
-    greetingBefore: "I'm",
-    greetingAfter: ", glad to see you!",
+    greetingBefore: "",
+    greetingAfter: "",
     viewProjects: "View projects",
     focusLabel: "focus",
     yearsOfExperienceLabel: "Years of experience",
@@ -63,7 +63,7 @@ const dictionary = {
     connectVerb: "connect",
   },
   footer: {
-    builtWith: "Built with Next.js.",
+    builtWith: "Built with Next.js",
   },
   socialRail: {
     scrollToTop: "Scroll to top",
