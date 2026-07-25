@@ -86,7 +86,7 @@ export function ProjectSpotlight({
               type="button"
               onClick={goPrev}
               aria-label={dict.projectSpotlight.previousProject}
-              className="focus-ring icon-btn flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-border text-foreground-muted hover:border-accent hover:text-accent"
+              className="focus-ring icon-btn flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-border bg-surface text-foreground-muted hover:border-accent hover:text-accent"
             >
               <ChevronLeftIcon className="h-4 w-4" />
             </button>
@@ -94,7 +94,7 @@ export function ProjectSpotlight({
               type="button"
               onClick={goNext}
               aria-label={dict.projectSpotlight.nextProject}
-              className="focus-ring icon-btn flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-border text-foreground-muted hover:border-accent hover:text-accent"
+              className="focus-ring icon-btn flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-border bg-surface text-foreground-muted hover:border-accent hover:text-accent"
             >
               <ChevronRightIcon className="h-4 w-4" />
             </button>
