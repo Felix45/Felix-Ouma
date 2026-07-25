@@ -68,7 +68,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
           {...register("name")}
         />
         {errors.name && (
-          <p id="name-error" role="alert" className="text-xs text-danger">
+          <p id="name-error" role="alert" className="mt-2 rounded-md bg-danger/10 px-2 py-2 text-xs text-danger">
             {errors.name.message}
           </p>
         )}
@@ -89,7 +89,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
           {...register("email")}
         />
         {errors.email && (
-          <p id="email-error" role="alert" className="text-xs text-danger">
+          <p id="email-error" role="alert" className="mt-2 rounded-md bg-danger/10 px-2 py-2 text-xs text-danger">
             {errors.email.message}
           </p>
         )}
@@ -109,7 +109,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
           {...register("message")}
         />
         {errors.message && (
-          <p id="message-error" role="alert" className="text-xs text-danger">
+          <p id="message-error" role="alert" className="mt-2 rounded-md bg-danger/10 px-2 py-2 text-xs text-danger">
             {errors.message.message}
           </p>
         )}
