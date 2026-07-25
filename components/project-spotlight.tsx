@@ -67,7 +67,7 @@ export function ProjectSpotlight({
             >
               <Link
                 href={`/projects/${project.slug}`}
-                className="focus-ring flex h-7 w-full min-w-0 items-center truncate rounded-md font-sans text-lg font-bold tracking-wide text-accent uppercase underline underline-offset-4"
+                className="focus-ring flex h-7 w-full min-w-0 items-center truncate rounded-md font-sans text-base font-bold tracking-wide text-accent uppercase underline underline-offset-4 sm:text-lg"
               >
                 {project.title}
               </Link>
